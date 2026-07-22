@@ -2,6 +2,7 @@ import Link from "next/link";
 import { getCurrentProfile } from "@/lib/auth";
 import { StatusBadge } from "@/components/StatusBadge";
 import { RunAccrualAll } from "@/components/RunAccrualAll";
+import { formatCurrency } from "@/lib/currency";
 
 export default async function CollectionsPage() {
   const ctx = await getCurrentProfile();
@@ -107,10 +108,7 @@ export default async function CollectionsPage() {
                   {c.overdueInstallments} overdue installment
                   {c.overdueInstallments > 1 ? "s" : ""} since{" "}
                   {c.earliestDueDate} · balance{" "}
-                  {c.outstandingBalance.toLocaleString(undefined, {
-                    style: "currency",
-                    currency: "USD",
-                  })}
+                  {formatCurrency(c.outstandingBalance)}
                 </p>
               </div>
               <StatusBadge status={c.loanStatus} />

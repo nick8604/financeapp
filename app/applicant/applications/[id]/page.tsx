@@ -4,6 +4,7 @@ import { getCurrentProfile } from "@/lib/auth";
 import { StatusBadge } from "@/components/StatusBadge";
 import { DocumentUpload } from "@/components/DocumentUpload";
 import { ActionButton } from "@/components/ActionButton";
+import { formatCurrency } from "@/lib/currency";
 import type { CreditCheck, Decision, Document, Loan } from "@/lib/types";
 
 export default async function ApplicationDetailPage({
@@ -51,10 +52,7 @@ export default async function ApplicationDetailPage({
         <div>
           <p className="text-zinc-500">Requested amount</p>
           <p className="font-medium text-zinc-900 dark:text-zinc-50">
-            {Number(application.requested_amount).toLocaleString(undefined, {
-              style: "currency",
-              currency: "USD",
-            })}
+            {formatCurrency(Number(application.requested_amount))}
           </p>
         </div>
         <div>
@@ -66,10 +64,7 @@ export default async function ApplicationDetailPage({
         <div>
           <p className="text-zinc-500">Monthly income</p>
           <p className="font-medium text-zinc-900 dark:text-zinc-50">
-            {Number(application.income).toLocaleString(undefined, {
-              style: "currency",
-              currency: "USD",
-            })}
+            {formatCurrency(Number(application.income))}
           </p>
         </div>
         <div>
@@ -129,10 +124,7 @@ export default async function ApplicationDetailPage({
             You&apos;re approved
           </h2>
           <p className="text-sm text-emerald-800 dark:text-emerald-300">
-            {Number(decision.approved_amount).toLocaleString(undefined, {
-              style: "currency",
-              currency: "USD",
-            })}{" "}
+            {formatCurrency(Number(decision.approved_amount))}{" "}
             at {decision.interest_rate}% APR over {decision.tenure_months}{" "}
             months.
           </p>

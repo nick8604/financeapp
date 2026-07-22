@@ -2,6 +2,7 @@ import { notFound } from "next/navigation";
 import { getCurrentProfile } from "@/lib/auth";
 import { StatusBadge } from "@/components/StatusBadge";
 import { DecisionForm } from "@/components/DecisionForm";
+import { formatCurrency } from "@/lib/currency";
 import type { CreditCheck, Decision, Document } from "@/lib/types";
 
 export default async function UnderwriterApplicationDetailPage({
@@ -49,10 +50,7 @@ export default async function UnderwriterApplicationDetailPage({
         <div>
           <p className="text-zinc-500">Requested amount</p>
           <p className="font-medium text-zinc-900 dark:text-zinc-50">
-            {Number(application.requested_amount).toLocaleString(undefined, {
-              style: "currency",
-              currency: "USD",
-            })}
+            {formatCurrency(Number(application.requested_amount))}
           </p>
         </div>
         <div>
@@ -64,10 +62,7 @@ export default async function UnderwriterApplicationDetailPage({
         <div>
           <p className="text-zinc-500">Monthly income</p>
           <p className="font-medium text-zinc-900 dark:text-zinc-50">
-            {Number(application.income).toLocaleString(undefined, {
-              style: "currency",
-              currency: "USD",
-            })}
+            {formatCurrency(Number(application.income))}
           </p>
         </div>
         <div>
@@ -106,9 +101,8 @@ export default async function UnderwriterApplicationDetailPage({
           </h2>
           <p className="text-zinc-700 dark:text-zinc-300">
             {decision.decision === "approved"
-              ? `Approved ${Number(decision.approved_amount).toLocaleString(
-                  undefined,
-                  { style: "currency", currency: "USD" }
+              ? `Approved ${formatCurrency(
+                  Number(decision.approved_amount)
                 )} at ${decision.interest_rate}% APR over ${decision.tenure_months} months.`
               : `Rejected. ${decision.reason ?? ""}`}
           </p>

@@ -2,6 +2,7 @@ import Link from "next/link";
 import { getCurrentProfile } from "@/lib/auth";
 import { NewApplicationForm } from "@/components/NewApplicationForm";
 import { StatusBadge } from "@/components/StatusBadge";
+import { formatCurrency } from "@/lib/currency";
 import type { Application } from "@/lib/types";
 
 export default async function ApplicantDashboard() {
@@ -47,10 +48,7 @@ export default async function ApplicantDashboard() {
                 >
                   <div>
                     <p className="font-medium text-zinc-900 dark:text-zinc-50">
-                      {Number(app.requested_amount).toLocaleString(undefined, {
-                        style: "currency",
-                        currency: "USD",
-                      })}{" "}
+                      {formatCurrency(Number(app.requested_amount))}{" "}
                       over {app.requested_tenure_months} months
                     </p>
                     <p className="text-sm text-zinc-500">

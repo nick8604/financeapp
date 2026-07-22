@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { getCurrentProfile } from "@/lib/auth";
 import { StatusBadge } from "@/components/StatusBadge";
+import { formatCurrency } from "@/lib/currency";
 
 export default async function UnderwriterDashboard() {
   const ctx = await getCurrentProfile();
@@ -37,17 +38,11 @@ export default async function UnderwriterDashboard() {
                 <div>
                   <p className="font-medium text-zinc-900 dark:text-zinc-50">
                     {applicantName} —{" "}
-                    {Number(app.requested_amount).toLocaleString(undefined, {
-                      style: "currency",
-                      currency: "USD",
-                    })}
+                    {formatCurrency(Number(app.requested_amount))}
                   </p>
                   <p className="text-sm text-zinc-500">
                     {app.requested_tenure_months} months · income{" "}
-                    {Number(app.income).toLocaleString(undefined, {
-                      style: "currency",
-                      currency: "USD",
-                    })}
+                    {formatCurrency(Number(app.income))}
                     {latestScore ? ` · credit score ${latestScore}` : ""}
                   </p>
                 </div>

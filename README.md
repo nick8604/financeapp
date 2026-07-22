@@ -2,7 +2,6 @@
 
 A Loan Origination System + Loan Management System, built as a single
 Next.js app with Supabase (Postgres + Auth + Storage) and deployed on Vercel.
-Zero-cost stack — no credit card required for any piece.
 
 ## Stack
 
@@ -17,7 +16,7 @@ Zero-cost stack — no credit card required for any piece.
 See the one-line constraints pitch at the bottom of this file for the HLD.
 
 ## What's built
-
+s
 - Signup/login via Supabase Auth, with an `applicant` / `underwriter` role chosen at signup
 - Application form (income, employment, requested amount/tenure)
 - Document upload (Supabase Storage, one file type: `id_proof`)

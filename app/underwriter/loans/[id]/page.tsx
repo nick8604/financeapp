@@ -2,6 +2,7 @@ import { notFound } from "next/navigation";
 import { getCurrentProfile } from "@/lib/auth";
 import { StatusBadge } from "@/components/StatusBadge";
 import { ActionButton } from "@/components/ActionButton";
+import { formatCurrency } from "@/lib/currency";
 import type { RepaymentInstallment } from "@/lib/types";
 
 export default async function UnderwriterLoanPage({
@@ -50,10 +51,7 @@ export default async function UnderwriterLoanPage({
         <div>
           <p className="text-zinc-500">Principal</p>
           <p className="font-medium text-zinc-900 dark:text-zinc-50">
-            {Number(loan.principal).toLocaleString(undefined, {
-              style: "currency",
-              currency: "USD",
-            })}
+            {formatCurrency(Number(loan.principal))}
           </p>
         </div>
         <div>
@@ -65,10 +63,7 @@ export default async function UnderwriterLoanPage({
         <div>
           <p className="text-zinc-500">Outstanding balance</p>
           <p className="font-medium text-zinc-900 dark:text-zinc-50">
-            {Number(loan.outstanding_balance).toLocaleString(undefined, {
-              style: "currency",
-              currency: "USD",
-            })}
+            {formatCurrency(Number(loan.outstanding_balance))}
           </p>
         </div>
       </section>
@@ -96,7 +91,7 @@ export default async function UnderwriterLoanPage({
                 <td className="px-4 py-3">{row.installment_no}</td>
                 <td className="px-4 py-3">{row.due_date}</td>
                 <td className="px-4 py-3">
-                  {Number(row.amount_due).toFixed(2)}
+                  {formatCurrency(Number(row.amount_due))}
                 </td>
                 <td className="px-4 py-3">
                   <StatusBadge status={row.status} />
