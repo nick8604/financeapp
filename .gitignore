@@ -37,6 +37,10 @@ yarn-error.log*
 # vercel
 .vercel
 
+# HLD/LLD are submitted separately via Drive per the assessment brief, not
+# part of the source code repo
+/docs
+
 # typescript
 *.tsbuildinfo
 next-env.d.ts
