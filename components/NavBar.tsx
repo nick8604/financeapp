@@ -30,8 +30,8 @@ export function NavBar({
       : [{ href: "/applicant", label: "Dashboard" }];
 
   return (
-    <nav className="flex flex-wrap items-center justify-between gap-x-4 gap-y-2 border-b border-zinc-200 bg-white px-4 py-3 sm:px-6 sm:py-4 dark:border-zinc-800 dark:bg-zinc-950">
-      <div className="flex flex-wrap items-center gap-3 sm:gap-6">
+    <nav className="flex items-center justify-between gap-x-2 border-b border-zinc-200 bg-white px-3 py-3 sm:gap-x-4 sm:px-6 sm:py-4 dark:border-zinc-800 dark:bg-zinc-950">
+      <div className="flex min-w-0 items-center gap-2 sm:gap-6">
         <span className="whitespace-nowrap font-semibold text-zinc-900 dark:text-zinc-50">
           Credit91
         </span>
@@ -45,8 +45,8 @@ export function NavBar({
           </Link>
         ))}
       </div>
-      <div className="flex items-center gap-2 sm:gap-4">
-        <span className="max-w-[140px] truncate whitespace-nowrap text-sm text-zinc-500 sm:max-w-none">
+      <div className="flex shrink-0 items-center gap-2 sm:gap-4">
+        <span className="hidden whitespace-nowrap text-sm text-zinc-500 sm:inline">
           {fullName ?? "You"} · {role}
         </span>
         <button
