@@ -30,28 +30,28 @@ export function NavBar({
       : [{ href: "/applicant", label: "Dashboard" }];
 
   return (
-    <nav className="flex items-center justify-between border-b border-zinc-200 bg-white px-6 py-4 dark:border-zinc-800 dark:bg-zinc-950">
-      <div className="flex items-center gap-6">
-        <span className="font-semibold text-zinc-900 dark:text-zinc-50">
+    <nav className="flex flex-wrap items-center justify-between gap-x-4 gap-y-2 border-b border-zinc-200 bg-white px-4 py-3 sm:px-6 sm:py-4 dark:border-zinc-800 dark:bg-zinc-950">
+      <div className="flex flex-wrap items-center gap-3 sm:gap-6">
+        <span className="whitespace-nowrap font-semibold text-zinc-900 dark:text-zinc-50">
           Credit91
         </span>
         {links.map((link) => (
           <Link
             key={link.href}
             href={link.href}
-            className="text-sm text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-50"
+            className="whitespace-nowrap text-sm text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-50"
           >
             {link.label}
           </Link>
         ))}
       </div>
-      <div className="flex items-center gap-4">
-        <span className="text-sm text-zinc-500">
+      <div className="flex items-center gap-2 sm:gap-4">
+        <span className="max-w-[140px] truncate whitespace-nowrap text-sm text-zinc-500 sm:max-w-none">
           {fullName ?? "You"} · {role}
         </span>
         <button
           onClick={handleLogout}
-          className="rounded-md border border-zinc-300 px-3 py-1.5 text-sm hover:bg-zinc-100 dark:border-zinc-700 dark:hover:bg-zinc-900"
+          className="whitespace-nowrap rounded-md border border-zinc-300 px-3 py-1.5 text-sm hover:bg-zinc-100 dark:border-zinc-700 dark:hover:bg-zinc-900"
         >
           Log out
         </button>
